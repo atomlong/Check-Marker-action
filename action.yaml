@@ -1,0 +1,52 @@
+name: 'Check Package Marker'
+author: 'Atom Long (@atomlong)'
+description: 'Check the PKGBUILD build marker for building archlinux/archlinuxarm/msys2 packages'
+
+branding:
+  icon: refresh-ccw
+  color: orange
+
+inputs:
+  arch:
+    description: 'CPU architecture: armv7, aarch64, x86_64.'
+    required: true
+    default: 'x86_64'
+    
+  repo:
+    description: 'The repository that this PKGBUILD package belongs to.'
+    required: true
+    default: 'cygn'
+    
+  target_os: 'The operating system that the target package is suitable for.'
+    required: true
+    default: 'Linux'
+    
+  marker_path: 'The rclone path of the build tag file, such as: onedrive:/mirror/archlinux/build.marker'
+    required: true
+    default: ''
+    
+  rclone_config: 'The content of the rclone configuration file.'
+    required: true
+    default: ''
+  
+  update: 'Whether to update the remote build marker with the current commit hash.'
+    required: false
+    default: 'false'
+
+  github_token:
+    description: 'Token for accessing the remote repo with authentication'
+    required: false
+
+outputs:
+  marked:
+    description: 'true if the current commit has already been built'
+  last_hash:
+    description: 'The commit hash of the last time the package was built.'
+  now_hash:
+    description: 'The commit hash of this time the package is built.'
+  error_message:
+    description: 'If an error occurs, output the related error message.'
+    
+runs:
+  using: 'node16'
+  main: 'main.js'

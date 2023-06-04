@@ -1,0 +1,24 @@
+{
+  "name": "check-marker-action",
+  "version": "1.0.0",
+  "description": "An action to Check the PKGBUILD build marker for building archlinux/archlinuxarm/msys2 packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomlong/Check-Marker-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atomlong/Check-Marker-action/issues"
+  },
+  "homepage": "https://github.com/atomlong/Check-Marker-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/exec": "^1.0.4"
+  }
+}
