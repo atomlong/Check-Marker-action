@@ -87,16 +87,19 @@ rclone_config="${INPUT_RCLONE_CONFIG}"
 update="${INPUT_UPDATE:-false}"
 
 # fail if marker_path is not set in workflow
-if [ -z "${INPUT_MARKER_URL}" ]; then
-    echo 'Workflow missing input value for "marker_path"' 1>&2
-    echo '      example: "marker_path: onedrive:/mirrors/$([ "${target_os}" == "Msys" ] && printf "msys2/${repo}/${arch}/")$([ "${target_os}" == "Linux" ] && printf archlinux$(uname -m | sed -r "s/armv.*|aarch64/arm/;s/x86_64|i686//")/$arch/${repo}/)build.marker"' 1>&2
-    exit 1
+if [ -z "${marker_path}" ]; then
+	error_message='Workflow missing input value for "marker_path"'
+    echo "${error_message}" 1>&2
+	echo "error_message=\"${error_message}\"" >>${GITHUB_OUTPUT}
+	exit 1
 fi
 
 eval marker_path="${marker_path}"
 
 if [ -z "${rclone_config}" ]; then
-	echo 'Workflow missing input value for "rclone_config"' 1>&2
+	error_message='Workflow missing input value for "rclone_config"'
+	echo "${error_message}" 1>&2
+	echo "error_message=\"${error_message}\"" >>${GITHUB_OUTPUT}
 	exit 1
 fi
 
