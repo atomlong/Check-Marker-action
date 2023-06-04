@@ -86,6 +86,8 @@ marker_path="${INPUT_MARKER_PATH}"
 rclone_config="${INPUT_RCLONE_CONFIG}"
 update="${INPUT_UPDATE:-false}"
 
+[ "${arch}" == "armv7" ] && arch="armv7h"
+
 # fail if marker_path is not set in workflow
 if [ -z "${marker_path}" ]; then
 	error_message='Workflow missing input value for "marker_path"'
