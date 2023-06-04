@@ -56,9 +56,12 @@ jobs:
       id: mark
       uses: atomlong/Check-Marker-action@master
       with:
-	    arch: armv7
+        arch: armv7
+        repo: cyng
         target_os: Linux
-        marker_url: ""
+        marker_path: "onedrive:/mirrors/archlinux/cygn/build.marker"
+        rclone_config: ${{ secrets.RCLONE_CONF }}
+        update: false
         github_token: ${{ secrets.GITHUB_TOKEN }}   # optional, for accessing repos that require authentication
 
     # Step 3: Display a message if 'sync' step had new commits (simple test)
