@@ -104,10 +104,14 @@ if [ -z "${rclone_config}" ]; then
 fi
 
 if ! which rclone &>/dev/null; then
-	error_message="No rclone installed on this system."
-	echo "${error_message}" 1>&2
-	echo "error_message=\"${error_message}\"" >>${GITHUB_OUTPUT}
-	exit 1
+	which pacman &>/dev/null && sudo pacman -S --needed --noconfirm rclone
+	which apt &>/dev/null && sudo apt -y install rclone
+	if ! which rclone &>/dev/null; then
+		error_message="No rclone installed on this system."
+		echo "${error_message}" 1>&2
+		echo "error_message=\"${error_message}\"" >>${GITHUB_OUTPUT}
+		exit 1
+	fi
 fi
 
 RCLONE_CONFIG_PATH=$(rclone config file | tail -n1)
