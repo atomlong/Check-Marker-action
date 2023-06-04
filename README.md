@@ -17,7 +17,6 @@ As with any Github Action, you must include it in a workflow for your repo to ru
 **marker_path**:	- The rclone path of the build tag file, such as: onedrive:/mirror/archlinux/build.marker  
 **rclone_config**:  - The content of the rclone configuration file.  
 **update**:         - Whether to update the remote build marker with the current commit hash.  
-**github_token**:	- Token for accessing the remote repo with authentication  
 
 ### Output Variables
 
@@ -62,7 +61,6 @@ jobs:
         marker_path: "onedrive:/mirrors/archlinux/cygn/build.marker"
         rclone_config: ${{ secrets.RCLONE_CONF }}
         update: false
-        github_token: ${{ secrets.GITHUB_TOKEN }}   # optional, for accessing repos that require authentication
 
     # Step 3: Display a message if 'sync' step had new commits (simple test)
     - name: Check for new commits

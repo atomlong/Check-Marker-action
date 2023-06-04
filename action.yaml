@@ -37,11 +37,6 @@ inputs:
     required: false
     default: 'false'
 
-  github_token:
-    description: 'Token for accessing the remote repo with authentication'
-    required: false
-    default: ''
-
 outputs:
   marked:
     description: 'true if the current commit has already been built'
