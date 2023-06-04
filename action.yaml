@@ -17,25 +17,30 @@ inputs:
     required: true
     default: 'cygn'
     
-  target_os: 'The operating system that the target package is suitable for.'
+  target_os:
+    description: 'The operating system that the target package is suitable for.'
     required: true
     default: 'Linux'
     
-  marker_path: 'The rclone path of the build tag file, such as: onedrive:/mirror/archlinux/build.marker'
+  marker_path:
+    description: 'The rclone path of the build tag file, such as: onedrive:/mirror/archlinux/build.marker'
     required: true
     default: ''
     
-  rclone_config: 'The content of the rclone configuration file.'
+  rclone_config:
+    description: 'The content of the rclone configuration file.'
     required: true
     default: ''
   
-  update: 'Whether to update the remote build marker with the current commit hash.'
+  update:
+    description: 'Whether to update the remote build marker with the current commit hash.'
     required: false
     default: 'false'
 
   github_token:
     description: 'Token for accessing the remote repo with authentication'
     required: false
+    default: ''
 
 outputs:
   marked:
